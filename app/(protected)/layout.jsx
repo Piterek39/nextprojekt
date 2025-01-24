@@ -9,7 +9,7 @@ function Protected({children}) {
     const returnUrl = usePathname();
 
     useLayoutEffect(() => {
-        if (!user){
+        if (!user&&!returnUrl.includes('/user/verify')){
             redirect(`/user/signin?returnUrl=${returnUrl}`);
         }
     }, []);

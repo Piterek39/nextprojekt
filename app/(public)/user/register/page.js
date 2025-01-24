@@ -51,10 +51,10 @@ export default function RegisterForm() {
       });
   };
 
-  // Jeśli użytkownik jest zalogowany, nie pokazujemy formularza rejestracji
-//   if (user) {
-//     return null;
-//   }
+  //Jeśli użytkownik jest zalogowany, nie pokazujemy formularza rejestracji
+  if (user) {
+    return null;
+  }
 
 
   return (
