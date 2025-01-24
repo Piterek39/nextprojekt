@@ -1,10 +1,11 @@
-'use client'
+"use client";
+
 import { signInWithEmailAndPassword, setPersistence, browserSessionPersistence } from "firebase/auth";
 import { getAuth } from 'firebase/auth'
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react"; // Importowanie useState dla przechowywania błędów
+import { Suspense,useState } from "react"; // Importowanie useState dla przechowywania błędów
 
-export default function SignInForm() {
+function SignInFormContent() {
   // Uzyskanie dostępu do instancji autoryzacji Firebase
   const auth = getAuth();
   const params = useSearchParams(); // Pobranie parametrów URL (np. returnUrl)
@@ -85,4 +86,11 @@ export default function SignInForm() {
       </form>
     </div>
   );
+}
+export default function SignInForm() {
+	return (
+		<Suspense fallback={<div>Loading...</div>}>
+			<SignInFormContent />
+		</Suspense>
+	);
 }

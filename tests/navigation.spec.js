@@ -19,9 +19,7 @@ await page.goto("http://localhost:3000/");
 		// Click the "Sign in" button
 		await page.click('button[type="submit"]');
 
-		// Verify successful redirection after signing in
-		// Assuming a successful login redirects to '/' or another route
-		// Replace with the actual route for post-login redirection in your app
+		
 		await expect(page).toHaveURL("http://localhost:3000/");
         await page.click("text=Profil");
         await expect(page).toHaveURL("http://localhost:3000/user/profile");
@@ -29,6 +27,6 @@ await page.goto("http://localhost:3000/");
 test('should redirect users to login page', async ({ page }) => {
  
     await page.goto("http://localhost:3000/user/profile");
-    await expect(page).toHaveURL("http://localhost:3000/");
+    await expect(page).toHaveURL("http://localhost:3000/user/signin?returnUrl=/user/profile");
     
     });
